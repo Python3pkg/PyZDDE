@@ -6,7 +6,7 @@
 #
 # Licence:     MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 from pyzdde.zcodes.zemaxoperands import _Operands
 from pyzdde.zcodes.zemaxbuttons import _Buttons
 

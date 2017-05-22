@@ -10,7 +10,7 @@
 #
 # Licence:     MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 import os
 import inspect
 import pyzdde.zdde as pyz

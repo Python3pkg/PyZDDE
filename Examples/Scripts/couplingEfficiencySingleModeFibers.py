@@ -11,7 +11,7 @@
 # Copyright: (c) 2012 - 2014
 # Licence:   MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function, division
+
 import pyzdde.zdde as pyz
 import matplotlib.pyplot as plt
 import math

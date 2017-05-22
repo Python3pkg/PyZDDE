@@ -11,7 +11,7 @@
 #                tracing and compare that with single dde call based ray tracing
 # Licence:    MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function, division
+
 import time as time
 import sys as sys
 import pyzdde.arraytrace as at  # Module for array ray tracing
@@ -67,8 +67,8 @@ def parity_zGetTrace_zArrayTrace_zGetTraceArray(ln, numRays):
     hx, hy, mode, surf, waveNum = 0.0, 0.0, 0, -1, 1
     radius = int(sqrt(numRays)/2)
     k = 0
-    for i in xrange(-radius, radius + 1, 1):
-        for j in xrange(-radius, radius + 1, 1):
+    for i in range(-radius, radius + 1, 1):
+        for j in range(-radius, radius + 1, 1):
             px, py = i/(2*radius), j/(2*radius)
             tData = ln.zGetTrace(waveNum, mode, surf, hx, hy, px, py)
             _, _, x[k], y[k], _, l[k], m[k], n[k], l2[k], m2[k], n2[k], _, = tData
@@ -124,8 +124,8 @@ def parity_zGetTraceDirect_zGetTraceDirectArray(ln, numRays):
     # use zGetTraceArray to surface # 2 to get ray coordinates and direction
     # cosines at surface 2
     radius = int(sqrt(numRays)/2)
-    flatGrid = [(x/(2*radius),y/(2*radius)) for x in xrange(-radius, radius + 1, 1)
-                      for y in xrange(-radius, radius + 1, 1)]
+    flatGrid = [(x/(2*radius),y/(2*radius)) for x in range(-radius, radius + 1, 1)
+                      for y in range(-radius, radius + 1, 1)]
     px = [e[0] for e in flatGrid]
     py = [e[1] for e in flatGrid]
     tData0 = at.zGetTraceArray(numRays=numRays, px=px, py=py, waveNum=1, surf=2)
@@ -156,8 +156,8 @@ def parity_zGetPolTrace_zGetPolTraceArray(ln, numRays):
     by zGetPolTrace() and zGetPolTraceArray()
     """
     radius = int(sqrt(numRays)/2)
-    flatGrid = [(x/(2*radius),y/(2*radius)) for x in xrange(-radius, radius + 1, 1)
-                      for y in xrange(-radius, radius + 1, 1)]
+    flatGrid = [(x/(2*radius),y/(2*radius)) for x in range(-radius, radius + 1, 1)
+                      for y in range(-radius, radius + 1, 1)]
     px = [e[0] for e in flatGrid]
     py = [e[1] for e in flatGrid]
     polRtArrData = at.zGetPolTraceArray(numRays=numRays, px=px, py=py, Ey=1.0,
@@ -199,8 +199,8 @@ def parity_zGetPolTraceDirect_zGetPolTraceDirectArray(ln, numRays):
     # use zGetTraceArray to surface # 2 to get ray coordinates and direction
     # cosines at surface 2
     radius = int(sqrt(numRays)/2)
-    flatGrid = [(x/(2*radius),y/(2*radius)) for x in xrange(-radius, radius + 1, 1)
-                      for y in xrange(-radius, radius + 1, 1)]
+    flatGrid = [(x/(2*radius),y/(2*radius)) for x in range(-radius, radius + 1, 1)
+                      for y in range(-radius, radius + 1, 1)]
     px = [e[0] for e in flatGrid]
     py = [e[1] for e in flatGrid]
     tData0 = at.zGetTraceArray(numRays=numRays, px=px, py=py, waveNum=1, surf=2)
@@ -254,8 +254,8 @@ def get_time_zArrayTrace(numRays, retRd=False):
     # Fill the rest of the ray data array,
     # hx, hy are zeros; mode = 0 (real), surf =  img surf, waveNum = 1
     k = 0
-    for i in xrange(-radius, radius + 1, 1):
-        for j in xrange(-radius, radius + 1, 1):
+    for i in range(-radius, radius + 1, 1):
+        for j in range(-radius, radius + 1, 1):
             k += 1
             rd[k].z = i/(2*radius)      # px
             rd[k].l = j/(2*radius)      # py
@@ -276,8 +276,8 @@ def get_time_zGetTraceArray(numRays, rettData=False):
     """
     radius = int(sqrt(numRays)/2)
     startTime = time.clock()
-    flatGrid = [(x/(2*radius),y/(2*radius)) for x in xrange(-radius, radius + 1, 1)
-                      for y in xrange(-radius, radius + 1, 1)]
+    flatGrid = [(x/(2*radius),y/(2*radius)) for x in range(-radius, radius + 1, 1)
+                      for y in range(-radius, radius + 1, 1)]
     px = [e[0] for e in flatGrid]
     py = [e[1] for e in flatGrid]
     tData = at.zGetTraceArray(numRays=numRays, px=px, py=py, waveNum=1)
@@ -296,8 +296,8 @@ def get_time_zGetTrace(ln, numRays):
     radius = int(sqrt(numRays)/2)
     startTime = time.clock()
     errSum = 0
-    for i in xrange(-radius, radius + 1, 1):
-        for j in xrange(-radius, radius + 1, 1):
+    for i in range(-radius, radius + 1, 1):
+        for j in range(-radius, radius + 1, 1):
             px, py = i/(2*radius), j/(2*radius)
             errSum += ln.zGetTrace(waveNum, mode, surf, hx, hy, px, py)[0]
     endTime = time.clock()
@@ -334,7 +334,7 @@ def speedtest_zGetTrace_zArrayTrace_zGetTraceArray(ln):
     print("\n")
     # i's must be odd, such that i**2, which is the number of rays to plot
     # is also odd
-    numRays = [i**2 for i in xrange(3, 104, 10)]
+    numRays = [i**2 for i in range(3, 104, 10)]
     numRuns = 50
     n = 20
     # compute average of best of 10 execution times of zArrayTrace

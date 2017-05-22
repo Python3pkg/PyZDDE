@@ -8,7 +8,7 @@
 # Copyright: (c) 2012- 2014
 # Licence:   MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 import os
 import matplotlib.pyplot as plt
 import pyzdde.zdde as pyz

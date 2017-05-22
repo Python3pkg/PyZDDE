@@ -15,7 +15,7 @@
 # Copyright:  (c) Indranil Sinharoy, 2012 - 2015
 # Licence:    MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function, division
+
 import sys as sys
 import os as os
 import pyzdde.arraytrace as at  # Module for array ray tracing

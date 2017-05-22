@@ -27,8 +27,8 @@
 # Licence:     MIT License
 #-------------------------------------------------------------------------------
 
-from __future__ import division
-from __future__ import print_function
+
+
 import os
 #import glob,
 import sys
@@ -36,7 +36,7 @@ import fnmatch
 from operator import itemgetter
 import datetime
 
-import Tkinter, tkFileDialog, Tkconstants
+import tkinter, tkinter.filedialog, tkinter.constants
 
 # The current Tkinter implementation is not working as expected in Python 3.x
 
@@ -70,67 +70,67 @@ fDBG_PRINT = False                   # Turn off/on the debug prints
 zmxfp = pyzddedirectory + "\\ZMXFILES"
 
 #A simple Tkinter GUI prompting for directory
-root = Tkinter.Tk()
+root = tkinter.Tk()
 
-class TkFileDialog(Tkinter.Frame):
+class TkFileDialog(tkinter.Frame):
     def __init__(self, root):
-        Tkinter.Frame.__init__(self, root, borderwidth=20,height=32,width=42)
+        tkinter.Frame.__init__(self, root, borderwidth=20,height=32,width=42)
 
         #Top-level label
-        self.label0 = Tkinter.Label(self,text = "Find eXtreme Hiatus",
-                           font=("Helvetica",16),fg='blue',justify=Tkinter.LEFT)
+        self.label0 = tkinter.Label(self,text = "Find eXtreme Hiatus",
+                           font=("Helvetica",16),fg='blue',justify=tkinter.LEFT)
         self.label0.pack()
 
         # options for buttons
-        button_opt = {'fill': Tkconstants.BOTH, 'padx': 5, 'pady': 5}
-        checkBox_opt = {'fill': Tkconstants.BOTH, 'padx': 5, 'pady': 5}
+        button_opt = {'fill': tkinter.constants.BOTH, 'padx': 5, 'pady': 5}
+        checkBox_opt = {'fill': tkinter.constants.BOTH, 'padx': 5, 'pady': 5}
 
         # define first button
-        self.b1 = Tkinter.Button(self, text='Select Directory', command=self.askdirectory)
+        self.b1 = tkinter.Button(self, text='Select Directory', command=self.askdirectory)
         self.b1.pack(**button_opt)
 
         #Add a checkbox button (for lens scaling option)
-        self.lensScaleOptVar = Tkinter.IntVar(value=0)
-        self.c1 = Tkinter.Checkbutton(self,text="Enable Lens scaling ?",
+        self.lensScaleOptVar = tkinter.IntVar(value=0)
+        self.c1 = tkinter.Checkbutton(self,text="Enable Lens scaling ?",
                  variable=self.lensScaleOptVar,command=self.cb1,onvalue=1)
         self.c1.pack(**checkBox_opt)
         self.c1.select()  #The check-box is checked initially
 
         #Add a label to indicate/enter normalization EFL
-        self.label1 = Tkinter.Label(self,text = "Normalization EFL", justify=Tkinter.LEFT)
+        self.label1 = tkinter.Label(self,text = "Normalization EFL", justify=tkinter.LEFT)
         self.label1.pack()
 
         #Add Entry Widget to enter default normalization EFL
-        self.normEFLVar = Tkinter.StringVar()
-        self.normEFLentry = Tkinter.Entry(self,text="test",textvariable=self.normEFLVar)
+        self.normEFLVar = tkinter.StringVar()
+        self.normEFLentry = tkinter.Entry(self,text="test",textvariable=self.normEFLVar)
         self.normEFLentry.pack()
         self.normEFLentry.insert(0, str(NORMALIZATION_EFL))
 
         #Add another label
-        self.label2 = Tkinter.Label(self,text = "Ignore values above:", justify=Tkinter.LEFT)
+        self.label2 = tkinter.Label(self,text = "Ignore values above:", justify=tkinter.LEFT)
         self.label2.pack()
 
         #Add an Entry Widget to enter value for upper level hiatus (string)
-        self.maxHiatusVar = Tkinter.StringVar()
-        self.maxHiatusEntry = Tkinter.Entry(self,text="test",textvariable=self.maxHiatusVar)
+        self.maxHiatusVar = tkinter.StringVar()
+        self.maxHiatusEntry = tkinter.Entry(self,text="test",textvariable=self.maxHiatusVar)
         self.maxHiatusEntry.pack()
         self.maxHiatusEntry.insert(0, str(HIATUS_UPPER_LIMIT))
 
         # checkbox button 2 (For text dump option)
-        self.txtFileDumpVar = Tkinter.IntVar(value=0)
-        self.c2 = Tkinter.Checkbutton(self,text="Save to a TXT file?",
+        self.txtFileDumpVar = tkinter.IntVar(value=0)
+        self.c2 = tkinter.Checkbutton(self,text="Save to a TXT file?",
                                  variable=self.txtFileDumpVar,command=self.cb2,onvalue=1)
         self.c2.pack(**checkBox_opt)
         self.c2.select()   #The check-box is checked initially
 
         #Add a "Find" button
-        self.b2 = Tkinter.Button(self,text='Find',fg="red",command=self.find)
+        self.b2 = tkinter.Button(self,text='Find',fg="red",command=self.find)
         self.b2.pack(**button_opt)
 
     def askdirectory(self):
         """Returns a selected directoryname."""
         global zmxfp
-        zmxfp = tkFileDialog.askdirectory(parent=root,initialdir=zmxfp,
+        zmxfp = tkinter.filedialog.askdirectory(parent=root,initialdir=zmxfp,
                             title='Please navigate to a directory')
         return
 
@@ -272,9 +272,9 @@ if ORDERED_HIATUS_DATA_IN_FILE:
     #Sort the "dictionary" in 'large2small' or 'small2large' order
     #The output (hiatusData_sorted) is a list of tuples
     if ORDERING == 'small2large':
-        hiatusData_sorted = sorted(hiatusData.items(),key=itemgetter(1))
+        hiatusData_sorted = sorted(list(hiatusData.items()),key=itemgetter(1))
     else:
-        hiatusData_sorted = sorted(hiatusData.items(),key=itemgetter(1),reverse=True)
+        hiatusData_sorted = sorted(list(hiatusData.items()),key=itemgetter(1),reverse=True)
     #Open a file for writing the data
     dtStamp = "_%d_%d_%d_%dh_%dm_%ds" %(now.year,now.month,now.day,now.hour,now.minute,now.second)
     fileref_hds = open("searchLargestHiatusLens_"+parentFolder+dtStamp+".txt",'w')

@@ -12,7 +12,7 @@
 # Licence:     New BSD license (Please see the file Notice.txt for further details)
 # Website:     http://code.activestate.com/recipes/577654-dde-client/
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 import sys
 from ctypes import c_int, c_double, c_char_p, c_void_p, c_ulong, c_char, pointer, cast
 from ctypes import windll, byref, create_string_buffer, Structure, sizeof

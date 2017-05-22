@@ -9,7 +9,7 @@
 #-------------------------------------------------------------------------------
 '''utility functions for handling various types of files used by Zemax. 
 '''
-from __future__ import print_function, division
+
 import os as _os
 import sys as _sys
 import collections as _co
@@ -445,14 +445,14 @@ def readBeamFile(beamfilename):
     xc = 1+nx/2
     yc = 1+ny/2
 
-    x_matrix = [[0 for x in xrange(nx)] for x in xrange(ny)]
-    y_matrix = [[0 for x in xrange(nx)] for x in xrange(ny)]
+    x_matrix = [[0 for x in range(nx)] for x in range(ny)]
+    y_matrix = [[0 for x in range(nx)] for x in range(ny)]
 
-    Ex_real = [[0 for x in xrange(nx)] for x in xrange(ny)]
-    Ex_imag = [[0 for x in xrange(nx)] for x in xrange(ny)]
+    Ex_real = [[0 for x in range(nx)] for x in range(ny)]
+    Ex_imag = [[0 for x in range(nx)] for x in range(ny)]
 
-    Ey_real = [[0 for x in xrange(nx)] for x in xrange(ny)]
-    Ey_imag = [[0 for x in xrange(nx)] for x in xrange(ny)]
+    Ey_real = [[0 for x in range(nx)] for x in range(ny)]
+    Ey_imag = [[0 for x in range(nx)] for x in range(ny)]
 
     k = 0
     for j in range(ny):

@@ -23,7 +23,7 @@ modes discussed in the Zemax manual
     4. zGetPolTraceDirectArray()
     5. zGetNSCTraceArray()
 """
-from __future__ import print_function
+
 import os as _os
 import sys as _sys
 import ctypes as _ct
@@ -256,7 +256,7 @@ def zGetTraceArray(numRays, hx=None, hy=None, px=None, py=None, intensity=None,
         waveNum = [1] * numRays
     want_opd = [want_opd] * numRays
     # fill up the structure
-    for i in xrange(1, numRays+1):
+    for i in range(1, numRays+1):
         rd[i].x = hx[i-1]
         rd[i].y = hy[i-1]
         rd[i].z = px[i-1]
@@ -280,7 +280,7 @@ def zGetTraceArray(numRays, hx=None, hy=None, px=None, py=None, intensity=None,
             exec(r + " = [0.0] * numRays", locals(), d)
         for i in ints:
             exec(i + " = [0] * numRays", locals(), d)
-        for i in xrange(1, numRays+1):
+        for i in range(1, numRays+1):
             d["x"][i-1] = rd[i].x
             d["y"][i-1] = rd[i].y
             d["z"][i-1] = rd[i].z
@@ -405,7 +405,7 @@ def zGetTraceDirectArray(numRays, x=None, y=None, z=None, l=None, m=None,
         waveNum = [1] * numRays
 
     # fill up the structure
-    for i in xrange(1, numRays+1):
+    for i in range(1, numRays+1):
         rd[i].x = x[i-1]
         rd[i].y = y[i-1]
         rd[i].z = z[i-1]
@@ -426,7 +426,7 @@ def zGetTraceDirectArray(numRays, x=None, y=None, z=None, l=None, m=None,
             exec(r + " = [0.0] * numRays", locals(), d)
         for i in ints:
             exec(i + " = [0] * numRays", locals(), d)
-        for i in xrange(1, numRays+1):
+        for i in range(1, numRays+1):
             d["x"][i-1] = rd[i].x
             d["y"][i-1] = rd[i].y
             d["z"][i-1] = rd[i].z
@@ -584,7 +584,7 @@ def zGetPolTraceArray(numRays, hx=None, hy=None, px=None, py=None, Exr=None,
         waveNum = [1] * numRays
 
     # fill up the structure
-    for i in xrange(1, numRays+1):
+    for i in range(1, numRays+1):
         rd[i].x = hx[i-1]
         rd[i].y = hy[i-1]
         rd[i].z = px[i-1]
@@ -608,7 +608,7 @@ def zGetPolTraceArray(numRays, hx=None, hy=None, px=None, py=None, Exr=None,
             exec(r + " = [0.0] * numRays", locals(), d)
         for i in ints:
             exec(i + " = [0] * numRays", locals(), d)
-        for i in xrange(1, numRays+1):
+        for i in range(1, numRays+1):
             d["intensity"][i-1] = rd[i].intensity
             d["Exr"][i-1] = rd[i].Exr
             d["Exi"][i-1] = rd[i].Exi
@@ -772,7 +772,7 @@ def zGetPolTraceDirectArray(numRays, x=None, y=None, z=None, l=None, m=None,
         waveNum = [1] * numRays
 
     # fill up the structure
-    for i in xrange(1, numRays+1):
+    for i in range(1, numRays+1):
         rd[i].x = x[i-1]
         rd[i].y = y[i-1]
         rd[i].z = z[i-1]
@@ -799,7 +799,7 @@ def zGetPolTraceDirectArray(numRays, x=None, y=None, z=None, l=None, m=None,
             exec(r + " = [0.0] * numRays", locals(), d)
         for i in ints:
             exec(i + " = [0] * numRays", locals(), d)
-        for i in xrange(1, numRays+1):
+        for i in range(1, numRays+1):
             d["intensity"][i-1] = rd[i].intensity
             d["Exr"][i-1] = rd[i].Exr
             d["Exi"][i-1] = rd[i].Exi
@@ -910,7 +910,7 @@ def zGetNSCTraceArray(x=0.0, y=0.0, z=0.0, l=0.0, m=0.0, n=1.0, Exr=0.0, Exi=0.0
                                              'opl'])
         nNumRaySegments = rd[0].want_opd # total number of segments stored
         rayData = ['']*nNumRaySegments
-        for i in xrange(1, nNumRaySegments+1):
+        for i in range(1, nNumRaySegments+1):
             rayData[i-1] = segData(rd[i].wave, rd[i].want_opd, rd[i].vigcode,
                                    rd[i].error, rd[i].x, rd[i].y, rd[i].z,
                                    rd[i].l, rd[i].m, rd[i].n, rd[i].intensity, rd[i].opd)
@@ -965,8 +965,8 @@ def _test_arraytrace_module_basic():
     rd = getRayDataArray(nr)
     # Fill the rest of the ray data array
     k = 0
-    for i in xrange(-10, 11, 1):
-        for j in xrange(-10, 11, 1):
+    for i in range(-10, 11, 1):
+        for j in range(-10, 11, 1):
             k += 1
             rd[k].z = i/20.0                   # px
             rd[k].l = j/20.0                   # py

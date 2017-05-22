@@ -12,7 +12,7 @@ import sys as _sys
 try: # Python 3.x
    from configparser import SafeConfigParser
 except ImportError: # Python 2.x
-    from ConfigParser import SafeConfigParser
+    from configparser import SafeConfigParser
 
 # Helper functions for chaning settings.ini file
 def setTextEncoding(txt_encoding=0):

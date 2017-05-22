@@ -8,7 +8,7 @@
 #-------------------------------------------------------------------------------
 '''utility functions for use within (mostly) and with the PyZDDE library
 '''
-from __future__ import print_function
+
 
 # Use IPython's display module to print objects if module is executing in an IPython
 # environment, else use standard print()

@@ -8,7 +8,7 @@
 #-----------------------------------------------------------------------------------------
 '''test functions in the module zfileutils
 '''
-from __future__ import print_function
+
 import os as os
 #from struct import unpack, pack 
 import pyzdde.zfileutils as zfu

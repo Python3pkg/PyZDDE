@@ -20,7 +20,7 @@
 # Created: Apr 04, 2015
 # License: MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function, division
+
 import os.path as ospath
 import matplotlib.pyplot as plt
 import time as time

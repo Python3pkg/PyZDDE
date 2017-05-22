@@ -13,7 +13,7 @@
 # Copyright:   (c) Indranil Sinharoy, 2012 - 2015
 # Licence:     MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function, division
+
 import pyzdde.arraytrace as at  # Module for array ray tracing
 import pyzdde.zdde as pyz
 import os as os
@@ -45,8 +45,8 @@ def trace_rays():
 
     # Fill the rest of the ray data array
     k = 0
-    for i in xrange(-radius, radius + 1, 1):
-        for j in xrange(-radius, radius + 1, 1):
+    for i in range(-radius, radius + 1, 1):
+        for j in range(-radius, radius + 1, 1):
             k += 1
             rd[k].z = i/(2*radius)                   # px
             rd[k].l = j/(2*radius)                   # py
@@ -65,8 +65,8 @@ def trace_rays():
             f.write("     px      py error            xout            yout"
                     "         l         m         n    opd    Exr     Exi"
                     "     Eyr     Eyi     Ezr     Ezi    trans\n")
-            for i in xrange(-radius, radius + 1, 1):
-                for j in xrange(-radius, radius + 1, 1):
+            for i in range(-radius, radius + 1, 1):
+                for j in range(-radius, radius + 1, 1):
                     k += 1
                     line = ("{:7.3f} {:7.3f} {:5d} {:15.6E} {:15.6E} {:9.5f} "
                             "{:9.5f} {:9.5f} {:7.3f} {:7.3f} {:7.3f} {:7.3f} "

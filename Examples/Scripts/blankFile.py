@@ -11,7 +11,7 @@
 #              In 95% of cases you don't need to use exception handling. PyZDDE
 #              is pretty stable.  
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 import traceback
 import pyzdde.zdde as pyz
 
@@ -24,7 +24,7 @@ try:
 
 
 
-except Exception, err:
+except Exception as err:
     traceback.print_exc()
 finally:
     #Close DDE link

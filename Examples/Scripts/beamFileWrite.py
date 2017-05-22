@@ -15,7 +15,7 @@
 # Copyright: (c) 2012 - 2014
 # Licence:   MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 from PIL import Image
 from pyzdde.zdde import writeBeamFile, readBeamFile
 import matplotlib.pyplot as plt

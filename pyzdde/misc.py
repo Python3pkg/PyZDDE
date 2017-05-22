@@ -8,9 +8,9 @@
 #-------------------------------------------------------------------------------
 '''miscellaneous utility functions. 
 '''
-from __future__ import print_function, division
+
 import os as _os 
-import zdde as _pyz
+from . import zdde as _pyz
 import collections as _co
 
 import pyzdde.config as _config

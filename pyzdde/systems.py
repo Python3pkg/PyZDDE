@@ -13,8 +13,8 @@ or ``ln = pyz.PyZDDE(); ln.zDDEInit()`` and ``systems`` (this module) is
 imported as ``import pyzdde.systems as optsys``
 """
 
-from __future__ import division
-from __future__ import print_function
+
+
 
 def zMakeIdealThinLens(ddeLn, fl=50, fn=5, stop_pos=0, stop_shift=0, opd_mode=1,
                        zmx_mode=0):

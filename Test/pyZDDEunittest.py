@@ -7,8 +7,8 @@
 #              This file is subject to the terms and conditions of the MIT License.
 #              For further details, please refer to LICENSE.txt
 #-------------------------------------------------------------------------------
-from __future__ import division
-from __future__ import print_function
+
+
 import os
 import sys
 import imp
@@ -687,14 +687,14 @@ class TestPyZDDEFunctions(unittest.TestCase):
             self.assertAlmostEqual(pupilData[i],d,places=4)
         # Print the pupil data if switch is on.
         if TestPyZDDEFunctions.pRetVar:
-            pupil_data = dict(zip((0,1,2,3,4,5,6,7),('type','value','ENPD','ENPP',
-                       'EXPD','EXPP','apodization_type','apodization_factor')))
-            pupil_type = dict(zip((0,1,2,3,4,5),
+            pupil_data = dict(list(zip((0,1,2,3,4,5,6,7),('type','value','ENPD','ENPP',
+                       'EXPD','EXPP','apodization_type','apodization_factor'))))
+            pupil_type = dict(list(zip((0,1,2,3,4,5),
                 ('entrance pupil diameter','image space F/#','object space NA',
-                  'float by stop','paraxial working F/#','object cone angle')))
-            pupil_value_type = dict(zip((0,1),("stop surface semi-diameter",
-                                             "system aperture")))
-            apodization_type = dict(zip((0,1,2),('none','Gaussian','Tangential')))
+                  'float by stop','paraxial working F/#','object cone angle'))))
+            pupil_value_type = dict(list(zip((0,1),("stop surface semi-diameter",
+                                             "system aperture"))))
+            apodization_type = dict(list(zip((0,1,2),('none','Gaussian','Tangential'))))
             # Print the pupil data
             print("Pupil data:")
             print("{pT} : {pD}".format(pT=pupil_data[0],pD=pupil_type[pupilData[0]]))

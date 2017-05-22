@@ -15,8 +15,8 @@ imported as ``import pyzdde.zdde as pyz`` and a PyZDDE communication object
 is then created as ``ln = pyz.createLink()`` or ``ln = pyz.PyZDDE();
 ln.zDDEInit()``.
 """
-from __future__ import division
-from __future__ import print_function
+
+
 import sys as _sys
 #import struct as _struct
 import os as _os
@@ -92,9 +92,9 @@ if _global_pyver3:
    import tkinter as _tk
    import tkinter.messagebox as _MessageBox
 else:
-    from itertools import izip as _izip, imap as _imap
-    import Tkinter as _tk
-    import tkMessageBox as _MessageBox
+    
+    import tkinter as _tk
+    import tkinter.messagebox as _MessageBox
     
 # Pyzdde local module imports
 import pyzdde.zcodes.zemaxbuttons as zb
@@ -400,7 +400,7 @@ def _getAppName(appNameDict):
         return 'ZEMAX'
     else:
         k_available = None
-        for k, v in appNameDict.items():
+        for k, v in list(appNameDict.items()):
             if not v:
                 k_available = k
                 break
@@ -10655,7 +10655,7 @@ class PyZDDE(object):
         self.zInsertSurface(surfNum=surfNum) 
         self.zSetSurfaceData(surfNum=surfNum, code=self.SDAT_TYPE, value='COORDBRK')
         # set the decenter and tilt values and order 
-        params = range(1, 7)
+        params = list(range(1, 7))
         values = [xdec, ydec, xtilt, ytilt, ztilt, order]
         for par, val in zip(params, values):
             self.zSetSurfaceParameter(surfNum=surfNum, param=par, value=val)
@@ -10752,7 +10752,7 @@ class PyZDDE(object):
         self.zSetSolve(dummy, self.SOLVE_SPAR_GLASS, self.SOLVE_GLASS_PICKUP, lastSurf)
         # use pick-up solves on second CB; set scale factor of -1 to lock the second
         # cb to the first.
-        pickupcolumns = range(6, 11)
+        pickupcolumns = list(range(6, 11))
         params = [self.SOLVE_SPAR_PAR1, self.SOLVE_SPAR_PAR2, 
                   self.SOLVE_SPAR_PAR3, self.SOLVE_SPAR_PAR4, self.SOLVE_SPAR_PAR5]
         offset, scale = 0, -1
@@ -10772,7 +10772,7 @@ class PyZDDE(object):
         self.zSetSurfaceParameter(surfNum=cb1, param=6, value=cb1Ord)    
         self.zSetSurfaceParameter(surfNum=cb2, param=6, value=cb2Ord)
         # set the decenter and tilt values in the first cb
-        params = range(1, 6)
+        params = list(range(1, 6))
         values = [xdec, ydec, xtilt, ytilt, ztilt]
         for par, val in zip(params, values):
             self.zSetSurfaceParameter(surfNum=cb1, param=par, value=val)
@@ -10844,7 +10844,7 @@ class PyZDDE(object):
             assert self.zInsertObject(surfNum, objNum) == 0, \
             'Error inserting object at object Number {}'.format(objNum)
         objData = {0:'NSC_SRCE', 1:comment, 5:refObjNum, 6:insideOf}
-        for code, data in objData.iteritems():
+        for code, data in objData.items():
             assert self.zSetNSCObjectData(surfNum, objNum, code, data) == data, \
             'Error in setting NSC object code {}'.format(code)
         assert self.zSetNSCPositionTuple(surfNum, objNum, x, y, z, tiltX, tiltY, tiltZ) \
@@ -10919,7 +10919,7 @@ class PyZDDE(object):
             assert self.zInsertObject(surfNum, objNum) == 0, \
             'Error inserting object at object Number {}'.format(objNum)
         objData = {0:'NSC_SRCR', 1:comment, 5:refObjNum, 6:insideOf}
-        for code, data in objData.iteritems():
+        for code, data in objData.items():
             assert self.zSetNSCObjectData(surfNum, objNum, code, data) == data, \
             'Error in setting NSC object code {}'.format(code)
         assert self.zSetNSCPositionTuple(surfNum, objNum, x, y, z, tiltX, tiltY, tiltZ) \
@@ -10983,7 +10983,7 @@ class PyZDDE(object):
             assert self.zInsertObject(surfNum, objNum) == 0, \
             'Error inserting object at object Number {}'.format(objNum)
         objData = {0:'NSC_ELLI', 1:comment, 5:refObjNum, 6:insideOf}
-        for code, data in objData.iteritems():
+        for code, data in objData.items():
             assert self.zSetNSCObjectData(surfNum, objNum, code, data) == data, \
             'Error in setting NSC object code {}'.format(code)
         assert self.zSetNSCPositionTuple(surfNum, objNum, x, y, z, tiltX, tiltY, tiltZ, material) \
@@ -11046,7 +11046,7 @@ class PyZDDE(object):
             assert self.zInsertObject(surfNum, objNum) == 0, \
             'Error inserting object at object Number {}'.format(objNum)
         objData = {0:'NSC_SRCR', 1:comment, 5:refObjNum, 6:insideOf}
-        for code, data in objData.iteritems():
+        for code, data in objData.items():
             assert self.zSetNSCObjectData(surfNum, objNum, code, data) == data, \
             'Error in setting NSC object code {}'.format(code)
         assert self.zSetNSCPositionTuple(surfNum, objNum, x, y, z, tiltX, tiltY, tiltZ, material) \
@@ -11137,7 +11137,7 @@ class PyZDDE(object):
             assert self.zInsertObject(surfNum, objNum) == 0, \
             'Error inserting object at object Number {}'.format(objNum)
         objData = {0:'NSC_DETE', 1:comment, 5:refObjNum, 6:insideOf}
-        for code, data in objData.iteritems():
+        for code, data in objData.items():
             assert self.zSetNSCObjectData(surfNum, objNum, code, data) == data, \
             'Error in setting NSC object code {}'.format(code)
         assert self.zSetNSCPositionTuple(surfNum, objNum, x, y, z, tiltX, tiltY, tiltZ, material) \
@@ -12096,7 +12096,7 @@ def _print_dict(data):
     arranged into nice rows and columns
     """
     leftColMaxWidth = max(_imap(len, data))
-    for key, value in data.items():
+    for key, value in list(data.items()):
         print("{}: {}".format(key.ljust(leftColMaxWidth + 1), value))
 
 def _openFile(fileName):
@@ -12121,7 +12121,7 @@ def _openFile(fileName):
     """
     global _global_use_unicode_text
     if _global_use_unicode_text:
-        f = open(fileName, u'rb')
+        f = open(fileName, 'rb')
     else:
         f = open(fileName, 'r')
     return f
@@ -12359,7 +12359,7 @@ def _txtAndSettingsToUse(self, txtFile, settingsFile, anaType):
                    'Zat':'_pyzdde_ZAT.CFG',  # coefficients by Zemax extensions
                    'Dvw':'_pyzdde_DVW.CFG',  # NSC detector viewer
                    }
-    assert txtFileDict.keys() == anaCfgDict.keys(), \
+    assert list(txtFileDict.keys()) == list(anaCfgDict.keys()), \
            "Dicts don't have matching keys" # for code integrity
     assert anaType in anaCfgDict
 

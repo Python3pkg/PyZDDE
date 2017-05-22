@@ -8,7 +8,7 @@
 #              This file is subject to the terms and conditions of the MIT License.
 #              For further details, please refer to LICENSE.txt
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 import re as _re
 from pyzdde.utils.pyzddeutils import _prettifyCodeDesc, _boldifyText, _prettifyText, _print_mod
 
@@ -850,15 +850,15 @@ def isZOperand(operand, operandType=0):
       bool : True if valid operand, else False.
     """
     if operandType == 1:
-        return str(operand) in _Operands.opt_operands.keys()
+        return str(operand) in list(_Operands.opt_operands.keys())
     elif operandType == 2:
-        return str(operand) in _Operands.tol_operands.keys()
+        return str(operand) in list(_Operands.tol_operands.keys())
     elif operandType == 3:
-        return str(operand) in _Operands.mco_operands.keys()
+        return str(operand) in list(_Operands.mco_operands.keys())
     elif operandType == 0:
-        return ((str(operand) in _Operands.opt_operands.keys()) or
-                (str(operand) in _Operands.tol_operands.keys()) or
-                (str(operand) in _Operands.mco_operands.keys()))
+        return ((str(operand) in list(_Operands.opt_operands.keys())) or
+                (str(operand) in list(_Operands.tol_operands.keys())) or
+                (str(operand) in list(_Operands.mco_operands.keys())))
     else:
         return False
 
@@ -931,7 +931,7 @@ def findZOperand(keywords):
     """
     words2find = [words.strip() for words in keywords.split(",")]
     previousFoundKeys = []
-    for operand, description in _Operands.opt_operands.items():
+    for operand, description in list(_Operands.opt_operands.items()):
         for kWord in words2find:
             if __find(kWord, description):
                 _print_mod(_prettifyCodeDesc(operand, description))
@@ -941,7 +941,7 @@ def findZOperand(keywords):
         _print_mod(_boldifyText("Found ", str(len(previousFoundKeys)),
                               " Optimization operands",'blue','red','blue'))
     previousFoundKeys = []
-    for operand, description in _Operands.tol_operands.items():
+    for operand, description in list(_Operands.tol_operands.items()):
         for kWord in words2find:
             if __find(kWord, description):
                 _print_mod(_prettifyCodeDesc(operand, description))
@@ -951,7 +951,7 @@ def findZOperand(keywords):
         _print_mod(_boldifyText("Found ", str(len(previousFoundKeys)),
                               " Tolerance operands",'blue','red','blue'))
     previousFoundKeys = []
-    for operand, description in _Operands.mco_operands.items():
+    for operand, description in list(_Operands.mco_operands.items()):
         for kWord in words2find:
             if __find(kWord, description):
                 _print_mod(_prettifyCodeDesc(operand, description))

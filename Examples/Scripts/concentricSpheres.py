@@ -9,7 +9,7 @@
 # Copyright:  (c) Julian Stuermer, 2012 - 2015
 # Licence:    MIT License
 #-------------------------------------------------------------------------------
-from __future__ import print_function, division
+
 import os
 import pyzdde.arraytrace as at # Module for array ray tracing
 import pyzdde.zdde as pyz

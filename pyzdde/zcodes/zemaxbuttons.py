@@ -8,7 +8,7 @@
 #              This file is subject to the terms and conditions of the MIT License.
 #              For further details, please refer to LICENSE.txt
 #-------------------------------------------------------------------------------
-from __future__ import print_function
+
 import re as _re
 from pyzdde.utils.pyzddeutils import _prettifyCodeDesc, _boldifyText, _prettifyText, _print_mod
 
@@ -291,7 +291,7 @@ def isZButtonCode(buttonCode):
     -------
     bool        : True if valid button code, False otherwise
     """
-    return str(buttonCode) in _Buttons.button_code.keys()
+    return str(buttonCode) in list(_Buttons.button_code.keys())
 
 def showZButtonDescription(buttonCode):
     """Get a short description about a button code.
@@ -343,7 +343,7 @@ def findZButtonCode(keywords):
     """
     words2find = [words.strip() for words in keywords.split(",")]
     previousFoundKeys = []
-    for button, description in _Buttons.button_code.items():
+    for button, description in list(_Buttons.button_code.items()):
         for kWord in words2find:
             if __find(kWord,description):
                 _print_mod(_prettifyCodeDesc(button,description))
